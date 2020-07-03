@@ -24,20 +24,20 @@ services:
     volumes_from:
       - nginx-proxy:rw
 
-  example-nginx:
-    container_name: example-nginx
+  cqrabogados-nginx:
+    container_name: cqrabogados-nginx
     build: ./nginx
     restart: always
     expose:
       - '80'
     links:
-      - 'example-node:server'
+      - 'cqrabogados-node:server'
     environment:
-      VIRTUAL_HOST: example.com,www.example.com
-      LETSENCRYPT_HOST: example.com,www.example.com
+      VIRTUAL_HOST: cqrabogados.com,www.cqrabogados.com
+      LETSENCRYPT_HOST: cqrabogados.com,www.cqrabogados.com
       LETSENCRYPT_EMAIL: nacho.vallejos17@outlook.com
 
-  example-node:
-    container_name: example-node
-    build: ${EXAMPLE_REPO}
+  cqrabogados-node:
+    container_name: cqrabogados-node
+    build: ${CQRABOGADOS_REPO}
     restart: always
