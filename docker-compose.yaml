@@ -41,21 +41,3 @@ services:
     container_name: cqrabogados-node
     build: ${CQRABOGADOS_REPO}
     restart: always
-
-  ivallejos-nginx:
-    container_name: ivallejos-nginx
-    build: ./nginx
-    restart: always
-    expose:
-      - '80'
-    links:
-      - 'ivallejos-node:server'
-    environment:
-      VIRTUAL_HOST: ivallejos.com,www.ivallejos.com
-      LETSENCRYPT_HOST: ivallejos.com,www.ivallejos.com
-      LETSENCRYPT_EMAIL: nacho.vallejos17@outlook.com
-
-  ivallejos-node:
-    container_name: ivallejos-node
-    build: ${IVALLEJOS_REPO}
-    restart: always
