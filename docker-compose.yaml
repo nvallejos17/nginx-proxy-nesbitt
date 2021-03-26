@@ -41,3 +41,21 @@ services:
     container_name: cqrabogados-node
     build: ${CQRABOGADOS_REPO}
     restart: always
+
+  incorporar-nginx:
+    container_name: incorporar-nginx
+    build: ./nginx
+    restart: always
+    expose:
+      - '80'
+    links:
+      - 'incorporar-node:server'
+    environment:
+      VIRTUAL_HOST: in-corporar.com,www.in-corporar.com
+      LETSENCRYPT_HOST: in-corporar.com,www.in-corporar.com
+      LETSENCRYPT_EMAIL: nacho.vallejos17@outlook.com
+
+  incorporar-node:
+    container_name: incorporar-node
+    build: ${INCORPORAR_REPO}
+    restart: always
